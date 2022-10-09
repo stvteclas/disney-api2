@@ -1,8 +1,15 @@
 package com.teclas.disney.model;
 
 import lombok.Data;
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.FetchType.LAZY;
 
 @Data
 @Entity
@@ -10,7 +17,8 @@ import javax.persistence.*;
 public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name="character_id")
+    private Long id;
     @Column(name = "image", nullable = false)
     private String image;
     @Column(name = "name")
@@ -21,7 +29,7 @@ public class Actor {
     private String weight;
     @Column(name = "history")
     private String history;
-    @Column(name = "associated_movies")
-    private String associatedMovies;
+    @ManyToMany(mappedBy = "actors" , fetch = LAZY, cascade=PERSIST)
+    private List<Movie> movies = new ArrayList<>();
 
 }

@@ -7,7 +7,7 @@ import java.util.List;
 public interface ActorService {
     Actor saveActor(Actor actor);
     List<Actor> getAllActors();
-    Actor getActorById(long id);
-    Actor updateActor(Actor actor, long id);
-    void deleteActor(long id);
+    Actor getActorById(Long id);
+    Actor updateActor(Actor actor, Long id);
+    void deleteActor(Long id);
 }
