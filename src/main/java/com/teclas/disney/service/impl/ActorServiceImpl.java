@@ -1,19 +1,18 @@
 package com.teclas.disney.service.impl;
 
 import com.teclas.disney.exception.ResourceNotFoundException;
-import com.teclas.disney.model.Actor;
-import com.teclas.disney.model.Movie;
+import com.teclas.disney.model.entity.Actor;
 import com.teclas.disney.repository.ActorRepository;
 import com.teclas.disney.service.ActorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class ActorServiceImpl implements ActorService {
+    @Autowired
     private ActorRepository actorRepository;
 
     public ActorServiceImpl(ActorRepository actorRepository) {
@@ -48,7 +47,6 @@ public class ActorServiceImpl implements ActorService {
         existingActor.setHistory(actor.getHistory());
         existingActor.setMovies(actor.getMovies()
                                      .stream()
-                                     .map(Movie::new)
                                      .collect(Collectors.toList()));
         actorRepository.save(existingActor);
 

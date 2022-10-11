@@ -1,8 +1,10 @@
 package com.teclas.disney.controller;
 
-import com.teclas.disney.model.Actor;
-import com.teclas.disney.model.Movie;
+import com.teclas.disney.model.entity.Genre;
+import com.teclas.disney.model.entity.Movie;
+import com.teclas.disney.service.GenreService;
 import com.teclas.disney.service.MovieService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +14,10 @@ import java.util.List;
 @RestController
 @RequestMapping()
 public class MovieController {
+    @Autowired
     private MovieService movieService;
+    @Autowired
+    private GenreService genreService;
 
     public MovieController(MovieService movieService){
         super();
@@ -47,5 +52,10 @@ public class MovieController {
     public ResponseEntity<String> deleteMovie(@PathVariable ("id") long id){
         movieService.deleteMovie(id);
         return new ResponseEntity<String>("Movie delete successfully", HttpStatus.OK);
+    }
+    @RequestMapping("/cargaGenero")
+   @ResponseBody
+    public List<Genre> listGenre(){
+        return genreService.listGenre();
     }
 }

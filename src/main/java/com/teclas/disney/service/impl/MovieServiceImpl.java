@@ -2,7 +2,7 @@ package com.teclas.disney.service.impl;
 
 import com.teclas.disney.exception.ResourceNotFoundException;
 
-import com.teclas.disney.model.Movie;
+import com.teclas.disney.model.entity.Movie;
 
 import com.teclas.disney.repository.MovieRepository;
 

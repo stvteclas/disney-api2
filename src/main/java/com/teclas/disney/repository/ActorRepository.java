@@ -1,6 +1,6 @@
 package com.teclas.disney.repository;
 
-import com.teclas.disney.model.Actor;
+import com.teclas.disney.model.entity.Actor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,11 +1,9 @@
-package com.teclas.disney.model;
+package com.teclas.disney.model.entity;
 
 import lombok.Data;
-import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import static javax.persistence.CascadeType.PERSIST;

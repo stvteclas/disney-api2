@@ -1,7 +1,6 @@
 package com.teclas.disney.controller;
 
-import com.teclas.disney.model.Actor;
-import com.teclas.disney.model.Genre;
+import com.teclas.disney.model.entity.Genre;
 import com.teclas.disney.service.GenreService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

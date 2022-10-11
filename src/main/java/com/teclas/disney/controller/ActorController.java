@@ -1,7 +1,8 @@
 package com.teclas.disney.controller;
 
-import com.teclas.disney.model.Actor;
+import com.teclas.disney.model.entity.Actor;
 import com.teclas.disney.service.ActorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,23 +10,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/characters")
 public class ActorController {
+    @Autowired
     private ActorService actorService;
 
-    public ActorController(ActorService actorService) {
-        super();
-        this.actorService = actorService;
-    }
+
 
     //build create actor REST API
-    @PostMapping("/character/save")
-    public ResponseEntity<Actor> saveActor(@RequestBody Actor actor){
+    @PostMapping("save")
+    public ResponseEntity<Actor> saveActor(Actor actor){
+
         return new ResponseEntity<Actor>(actorService.saveActor(actor), HttpStatus.CREATED);
     }
     // build get all Actors REST API
     @GetMapping("/characters")
 public List<Actor> getAllActors(){
+
         return actorService.getAllActors();
 }
 
@@ -42,7 +43,7 @@ public List<Actor> getAllActors(){
     }
 
     //build delete Actor REST API
-    @DeleteMapping("{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<String> deleteActor(@PathVariable ("id") long id){
         actorService.deleteActor(id);
         return new ResponseEntity<String>("Actor delete successfully", HttpStatus.OK);

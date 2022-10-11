@@ -1,7 +1,6 @@
 package com.teclas.disney.service;
 
-import com.teclas.disney.model.Actor;
-import com.teclas.disney.model.Movie;
+import com.teclas.disney.model.entity.Movie;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.teclas.disney.model;
+package com.teclas.disney.model.entity;
 
-import com.teclas.disney.exception.ResourceNotFoundException;
+import com.teclas.disney.model.entity.Actor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,22 +29,15 @@ public class Movie {
     @Column(name = "rating")
     private int rating;
 
-    @ManyToOne(fetch = LAZY, optional = false)
-    @JoinColumn(name = "genre_id", nullable = false)
-    private Genre genre;
+   /* @ManyToOne(fetch = LAZY)
+@JoinColumn(name = "id_genre", referencedColumnName = "genre_id", nullable = true)
+    private Genre genre;*/
 
-    @JoinTable(name = "movie_actors",
+
+   @JoinTable(name = "movie_actors",
                 joinColumns = @JoinColumn(name = "movie_id"),
                 inverseJoinColumns = @JoinColumn(name = "actor_id"))
     @ManyToMany(fetch = LAZY)
     private List<Actor> actors = new ArrayList<>();
 
-
-
-    public Movie(Movie movie) {
-        setMovieId(movie.getMovieId());
-        setTitle(movie.getTitle());
-        setReleaseDate(movie.getReleaseDate());
-        setRating(movie.getRating());
-    }
 }
