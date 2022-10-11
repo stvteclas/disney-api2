@@ -15,18 +15,13 @@ import static javax.persistence.FetchType.LAZY;
 public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="character_id")
+    @Column(name="actor_id")
     private Long id;
-    @Column(name = "image", nullable = false)
     private String image;
-    @Column(name = "name")
     private String name;
-    @Column(name = "age")
     private String age;
-    @Column(name = "weight")
     private String weight;
-    @Column(name = "history")
-    private String history;
+    private String story;
     @ManyToMany(mappedBy = "actors" , fetch = LAZY, cascade=PERSIST)
     private List<Movie> movies = new ArrayList<>();
 

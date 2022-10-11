@@ -44,7 +44,7 @@ public class ActorServiceImpl implements ActorService {
         existingActor.setImage(actor.getImage());
         existingActor.setAge(actor.getAge());
         existingActor.setWeight(actor.getWeight());
-        existingActor.setHistory(actor.getHistory());
+        existingActor.setStory(actor.getStory());
         existingActor.setMovies(actor.getMovies()
                                      .stream()
                                      .collect(Collectors.toList()));
